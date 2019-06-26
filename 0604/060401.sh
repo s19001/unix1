@@ -1,4 +1,4 @@
-if [ -f "$1"]; then
+if [ -f "$1" ]; then
     # duでファイル容量を求める
     du "$1"
 else
