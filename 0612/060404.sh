@@ -5,15 +5,9 @@ usage()
 {
     local script_name=$(basename "$0")
     cat << END
-Usage: $script_name PATTERN [PATH] [NAME_PATTERN]
-Find file in current directory recursively,and printlines whichmatch PATTERN.
-
-    PATH        find file in PATH directory, instead of current directory
-    NAME_PATTERN  specify name pattern to find file
-
-Examples:
-    $script_name return
-    $script_name return ~ '*.txt'
+使い方: 060404.sh DIRPATH
+DIRPATHで指定したディレクトリ下の読み取り不可ファイルの一覧表示
+DIRPATH - 読み取り不可ファイルの一覧表示を行うディレクトリパスを指定
 END
 }
 
@@ -26,4 +20,9 @@ if [ -d "$1" ]; then
     done
 else
     echo "${1}: ディレクトリではありません"
+fi
+
+if [ "$#" -eq 0 ]; then
+    usage
+    exit 1
 fi

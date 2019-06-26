@@ -1,6 +1,6 @@
 for file in "$@"
 do
-    if [ -f "$1"]; then
+    if [ -f "$1" ]; then
         du "$file"
     else
         # エラーメッセージ

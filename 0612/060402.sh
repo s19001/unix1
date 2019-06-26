@@ -4,24 +4,23 @@ usage()
 {
     local script_name=$(basename "$0")
     cat << END
-Usage: $script_name PATTERN [PATH] [NAME_PATTERN]
-Find file in current directory recursively,and printlines whichmatch PATTERN.
-
-    PATH        find file in PATH directory, instead of current directory
-    NAME_PATTERN  specify name pattern to find file
-
-Examples:
-    $script_name return
-    $script_name return ~ '*.txt'
+使い方: 060402.sh FILEPATH...
+FILEPATHで指定したファイルの容量を表示
+FILEPATH - 容量を求めるファイルのパスを指定、複数指定可
 END
 }
 
 for file in "$@"
 do
-    if [ -f "$1"]; then
+    if [ -f "$file" ]; then
         du "$file"
     else
         # エラーメッセージ
         echo "${file}: 通常のファイルではありません"
     fi
 done
+
+if [ "$#" -eq 0 ]; then
+    usage
+    exit 1
+fi
